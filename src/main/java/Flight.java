@@ -1,22 +1,25 @@
 import java.util.ArrayList;
 
 public class Flight {
-    private ArrayList<Passenger> passengerList;
+    private ArrayList<Passenger> boardedPassengerList;
     private ArrayList<Bag> bagList;
+    private int maxBagWeight;
 
-    public Flight(){
-        this.passengerList = new ArrayList<>();
+    public Flight(int maxBagWeight){
+        this.boardedPassengerList = new ArrayList<>();
         this.bagList = new ArrayList<>();
+        this.maxBagWeight = maxBagWeight;
     }
 
-
-
-    public void checkInPassenger(Passenger passenger) {
-        this.passengerList.add(passenger);
+    public void boardPassenger(Airport airport, Passenger passenger) {
+        if ( airport.checkIfPassengerIsInList(passenger)){
+            this.boardedPassengerList.add(passenger);
+            airport.removeCheckedInPassenger(passenger);
+        }
     }
 
-    public int countPassengerList() {
-       return this.passengerList.size();
+    public int countBoardedPassengerList() {
+       return this.boardedPassengerList.size();
     }
 
     public void checkInBag(Bag bag) {
@@ -28,7 +31,12 @@ public class Flight {
         return this.bagList.size();
     }
 
-    public void removePassenger(Passenger passenger){
-        passengerList.remove(passenger);
+    public void removeBoardedPassenger(Passenger passenger){
+        boardedPassengerList.remove(passenger);
+    }
+
+
+    public boolean checkBagWeight(Bag bag) {
+        return bag.getWeight() <= this.maxBagWeight;
     }
 }

@@ -7,12 +7,13 @@ public class FlightTest {
     Flight flight;
     Passenger passenger;
     Bag bag;
-
+    Airport airport;
     @Before
     public void before(){
-        flight = new Flight();
+        flight = new Flight(30);
         passenger = new Passenger();
-        bag = new Bag();
+        airport = new Airport();
+        bag = new Bag(10);
     }
 
     @Test
@@ -21,42 +22,54 @@ public class FlightTest {
     }
 
     @Test
-    public void canCountPassengerList() {
-        assertEquals(0, flight.countPassengerList());
+    public void canCountBoardedPassengerList() {
+        assertEquals(0, flight.countBoardedPassengerList());
     }
 
     @Test
-    public void canCheckInPassengerToFlight(){
-        flight.checkInPassenger(passenger);
-        assertEquals(1, flight.countPassengerList());
+    public void canBoardPassengerToFlight(){
+        passenger.checkIn();
+        airport.addCheckedInPassenger(passenger);
+        flight.boardPassenger(airport, passenger);
+        assertEquals(1, flight.countBoardedPassengerList());
+        assertEquals(0, airport.countCheckedInPassengerList());
     }
+
+    @Test
+    public void canCheckBagWeightAllowed(){
+        assertEquals(true, flight.checkBagWeight(bag));
+    }
+
+    @Test
+    public void canCheckBagWeightNotAllowed(){
+        Bag overweightBag = new Bag (31);
+        assertEquals(false,flight.checkBagWeight(overweightBag));
+    }
+
     @Test
     public void canAddBagToFlight(){
         flight.checkInBag(bag);
-        assertEquals(1, flight.countBagList() );
+        assertEquals(1, flight.countBagList());
     }
 
     @Test
-    public void canRemovePassenger(){
-        flight.checkInPassenger(passenger);
-        flight.removePassenger(passenger);
-        assertEquals(0, flight.countPassengerList());
+    public void canRemoveBoardedPassenger(){
+        passenger.checkIn();
+        airport.addCheckedInPassenger(passenger);
+        flight.boardPassenger(airport, passenger);
+        flight.removeBoardedPassenger(passenger);
+        assertEquals(0, flight.countBoardedPassengerList());
     }
 
     @Test
-    public void cantRemovePassengerNonExistant(){
-        flight.checkInPassenger(passenger);
-        flight.removePassenger(new Passenger());
-        assertEquals(1, flight.countPassengerList());
-    }
-
-    @Test
-    public void canRemoveAllPassengers(){
-        
+    public void cantRemoveBoardedPassengerNonExistant(){
+        passenger.checkIn();
+        airport.addCheckedInPassenger(passenger);
+        flight.boardPassenger(airport, passenger);
+        flight.removeBoardedPassenger(new Passenger());
+        assertEquals(1, flight.countBoardedPassengerList());
     }
 
 
-
-    //Can add 1k passengers to flight
 
 }

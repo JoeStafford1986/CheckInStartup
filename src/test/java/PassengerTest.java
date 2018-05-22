@@ -12,6 +12,17 @@ public class PassengerTest {
         passenger = new Passenger() ;
     }
 
+    @Test
+    public void canGetCheckInStatus(){
+        assertEquals(false, passenger.getCheckInStatus());
+    }
+
+    @Test
+    public void canCheckIn(){
+        passenger.checkIn();
+        assertEquals(true, passenger.getCheckInStatus());
+    }
+
 
 
 
