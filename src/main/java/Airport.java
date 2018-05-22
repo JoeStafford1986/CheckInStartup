@@ -4,7 +4,7 @@ public class Airport {
     private ArrayList<Passenger> checkedInPassengers;
 
 
-    public Airport(){
+    public Airport() {
         this.checkedInPassengers = new ArrayList<>();
     }
 
@@ -23,7 +23,7 @@ public class Airport {
         return this.checkedInPassengers.contains(passenger);
     }
 
-    public void removeCheckedInPassenger(Passenger passenger){
+    public void removeCheckedInPassenger(Passenger passenger) {
         checkedInPassengers.remove(passenger);
     }
 }

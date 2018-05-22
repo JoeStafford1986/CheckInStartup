@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Passenger {
-
     private boolean checkInStatus;
-    private ArrayList<Bag> bagList;
+    private ArrayList<Bag> bags;
 
-    public Passenger(){
+
+    public Passenger() {
         this.checkInStatus = false;
-        this.bagList = new ArrayList<>();
+        this.bags = new ArrayList<>();
     }
 
 
@@ -18,8 +18,4 @@ public class Passenger {
     public void checkIn() {
         this.checkInStatus = true;
     }
-
-
-
-
 }
