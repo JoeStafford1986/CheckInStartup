@@ -1,8 +1,8 @@
 public class Bag {
-
     private int weight;
 
-    public Bag(int weight){
+
+    public Bag(int weight) {
         this.weight = weight;
     }
 
@@ -10,5 +10,4 @@ public class Bag {
     public int getWeight() {
         return this.weight;
     }
-
 }

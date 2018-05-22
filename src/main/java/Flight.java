@@ -5,11 +5,13 @@ public class Flight {
     private ArrayList<Bag> boardedBags;
     private int maxBagWeight;
 
+
     public Flight(int maxBagWeight) {
         this.boardedPassengers = new ArrayList<>();
         this.boardedBags = new ArrayList<>();
         this.maxBagWeight = maxBagWeight;
     }
+
 
     public void boardPassenger(Airport airport, Passenger passenger) {
         if ( airport.checkIfPassengerIsInList(passenger)) {
