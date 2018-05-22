@@ -20,7 +20,7 @@ public class Flight {
         }
     }
 
-    public int countBoardedPassengerList() {
+    public int countBoardedPassengers() {
        return this.boardedPassengers.size();
     }
 
