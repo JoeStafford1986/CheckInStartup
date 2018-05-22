@@ -1,35 +1,29 @@
 import java.util.ArrayList;
 
 public class Airport {
+    private ArrayList<Passenger> checkedInPassengers;
 
-    private ArrayList<Passenger> checkedInPassengerList;
 
     public Airport(){
-        this.checkedInPassengerList = new ArrayList<>();
+        this.checkedInPassengers = new ArrayList<>();
     }
 
 
-
-
-    public int countCheckedInPassengerList() {
-         return this.checkedInPassengerList.size();
+    public int countCheckedInPassengers() {
+        return this.checkedInPassengers.size();
     }
-
 
     public void addCheckedInPassenger(Passenger passenger) {
-        if(passenger.getCheckInStatus() ==true){
-            this.checkedInPassengerList.add(passenger);
-
+        if(passenger.getCheckInStatus()){
+            this.checkedInPassengers.add(passenger);
         }
     }
 
     public boolean checkIfPassengerIsInList(Passenger passenger) {
-      return this.checkedInPassengerList.contains(passenger);
+        return this.checkedInPassengers.contains(passenger);
     }
 
     public void removeCheckedInPassenger(Passenger passenger){
-        checkedInPassengerList.remove(passenger);
+        checkedInPassengers.remove(passenger);
     }
-
-
 }
